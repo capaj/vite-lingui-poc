@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-jsx": "^7.12.13",
-    "lingui.macro": "src/lingui/macro/",
+    "@lingui/react": "^3.7.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
@@ -24,7 +24,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react-refresh": "^1.3.1",
-    "babel-plugin-console": "github:capaj/babel-plugin-console",
+    "babel-plugin-console": "^0.2.1",
     "babel-plugin-macros": "^3.0.1",
     "husky": "^5.1.3",
     "make-plural": "^6.2.2",

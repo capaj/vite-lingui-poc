@@ -7,7 +7,6 @@ export default defineConfig({
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
     alias: [
       { find: 'path', replacement: 'path-browserify' },
-      { find: '@lingui/react', replacement: './lingui/react/Trans' },
     ],
   },
   define: {
