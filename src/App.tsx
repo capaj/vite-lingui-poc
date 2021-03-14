@@ -6,6 +6,11 @@ import { Trans } from 'lingui.macro'
 import { i18n } from '@lingui/core'
 import './App.css'
 import { I18nProvider } from './lingui/react'
+import { messages } from './locales/en/messages'
+import * as plurals from 'make-plural/plurals'
+
+i18n.loadLocaleData('en', { plurals: plurals.en })
+i18n.load('en', messages)
 
 i18n.activate('en')
 
