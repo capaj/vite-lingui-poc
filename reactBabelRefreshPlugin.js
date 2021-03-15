@@ -48,7 +48,7 @@ function reactBabelRefreshPlugin(opts = { reactRefreshInDev: true }) {
     enforce: 'pre',
 
     configResolved(config) {
-      // disableRefresh = config.command === 'build' || config.isProduction
+      disableRefresh = config.command === 'build' || config.isProduction
       base = config.base
     },
 
