@@ -34,13 +34,13 @@ window.__vite_plugin_react_preamble_installed__ = true
 `
 
 /**
- * Transform babel plugin for transforming and injecting per-file refresh code.
- *
+ * Transform plugin for transforming files with babel and injecting per-file refresh code for react-fast refresh.
+ * @param {*} opts accepts {reactRefreshInDev: boolean}, defaults to {reactRefreshInDev: true}
  * @type {import('.').default}
  */
-function reactBabelRefreshPlugin(opts = {}) {
+function reactBabelRefreshPlugin(opts = { reactRefreshInDev: true }) {
   let base = '/'
-  let disableRefresh = !opts.reactRefreshInDev || false
+  let disableRefresh = !opts.reactRefreshInDev
 
   return {
     name: 'react-refresh',
@@ -116,7 +116,7 @@ function reactBabelRefreshPlugin(opts = {}) {
         plugins: [
           require('@babel/plugin-transform-react-jsx-self'),
           require('@babel/plugin-transform-react-jsx-source'),
-          false
+          disableRefresh
             ? null
             : [require('react-refresh/babel'), { skipEnvCheck: true }],
         ].filter(Boolean),
@@ -125,9 +125,12 @@ function reactBabelRefreshPlugin(opts = {}) {
         sourceFileName: id,
       })
 
-      if (!/\$RefreshReg\$\(/.test(result.code) || disableRefresh) {
+      if (!/\$RefreshReg\$\(/.test(result.code)) {
         // no component detected in the file
-        return code
+        return result.code
+      }
+      if (disableRefresh) {
+        return result.code
       }
 
       const header = `
