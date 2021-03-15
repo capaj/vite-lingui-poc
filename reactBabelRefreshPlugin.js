@@ -34,13 +34,13 @@ window.__vite_plugin_react_preamble_installed__ = true
 `
 
 /**
- * Transform plugin for transforming and injecting per-file refresh code.
+ * Transform babel plugin for transforming and injecting per-file refresh code.
  *
  * @type {import('.').default}
  */
-function reactRefreshPlugin(opts) {
-  let shouldSkip = false
+function reactBabelRefreshPlugin(opts = {}) {
   let base = '/'
+  let disableRefresh = !opts.reactRefreshInDev || false
 
   return {
     name: 'react-refresh',
@@ -48,7 +48,7 @@ function reactRefreshPlugin(opts) {
     enforce: 'pre',
 
     configResolved(config) {
-      //shouldSkip = config.command === 'build' || config.isProduction
+      // disableRefresh = config.command === 'build' || config.isProduction
       base = config.base
     },
 
@@ -65,7 +65,7 @@ function reactRefreshPlugin(opts) {
     },
 
     transform(code, id, ssr) {
-      if (shouldSkip || ssr) {
+      if (ssr) {
         return
       }
 
@@ -91,7 +91,7 @@ function reactRefreshPlugin(opts) {
         'topLevelAwait',
         'classProperties',
         'classPrivateProperties',
-        'classPrivateMethods'
+        'classPrivateMethods',
       ]
       if (/\.tsx?$/.test(id)) {
         // it's a typescript file
@@ -100,7 +100,7 @@ function reactRefreshPlugin(opts) {
         // commonly used with TS.
         parserPlugins.push('typescript', 'decorators-legacy')
       }
-      if (opts && opts.parserPlugins) {
+      if (opts.parserPlugins) {
         parserPlugins.push(...opts.parserPlugins)
       }
 
@@ -111,19 +111,21 @@ function reactRefreshPlugin(opts) {
         parserOpts: {
           sourceType: 'module',
           allowAwaitOutsideFunction: true,
-          plugins: parserPlugins
+          plugins: parserPlugins,
         },
         plugins: [
           require('@babel/plugin-transform-react-jsx-self'),
           require('@babel/plugin-transform-react-jsx-source'),
-          [require('react-refresh/babel'), { skipEnvCheck: true }]
-        ],
+          false
+            ? null
+            : [require('react-refresh/babel'), { skipEnvCheck: true }],
+        ].filter(Boolean),
         ast: !isReasonReact,
         sourceMaps: true,
-        sourceFileName: id
+        sourceFileName: id,
       })
 
-      if (!/\$RefreshReg\$\(/.test(result.code)) {
+      if (!/\$RefreshReg\$\(/.test(result.code) || disableRefresh) {
         // no component detected in the file
         return code
       }
@@ -166,12 +168,12 @@ function reactRefreshPlugin(opts) {
 
       return {
         code: `${header}${result.code}${footer}`,
-        map: result.map
+        map: result.map,
       }
     },
 
     transformIndexHtml() {
-      if (shouldSkip) {
+      if (disableRefresh) {
         return
       }
 
@@ -179,10 +181,10 @@ function reactRefreshPlugin(opts) {
         {
           tag: 'script',
           attrs: { type: 'module' },
-          children: preambleCode.replace(`__BASE__`, base)
-        }
+          children: preambleCode.replace(`__BASE__`, base),
+        },
       ]
-    }
+    },
   }
 }
 
@@ -215,6 +217,6 @@ function isComponentishName(name) {
   return typeof name === 'string' && name[0] >= 'A' && name[0] <= 'Z'
 }
 
-module.exports = reactRefreshPlugin
-reactRefreshPlugin['default'] = reactRefreshPlugin
-reactRefreshPlugin.preambleCode = preambleCode
+module.exports = reactBabelRefreshPlugin
+reactBabelRefreshPlugin['default'] = reactBabelRefreshPlugin
+reactBabelRefreshPlugin.preambleCode = preambleCode

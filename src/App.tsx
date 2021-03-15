@@ -17,8 +17,7 @@ i18n.activate('en')
 function App() {
   const [count, setCount] = useState(0)
   const variable = 'My uber variable'
-  // @ts-expect-error
-  console.scope()
+
   return (
     <I18nProvider i18n={i18n}>
       <div className="App">
