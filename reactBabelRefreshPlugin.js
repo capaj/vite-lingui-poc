@@ -1,6 +1,6 @@
 // based on https://github.com/vitejs/vite/blob/2cdb3f6cdf742e42aa62e60f8fce1dadcab225d8/packages/plugin-react-refresh/index.js
-// (line with shouldSkip is commented out)
-// TODO: make PR with some config option (so the babel plugins are run during build)
+
+// TODO: try to prepare a PR to vite official repo with a config option to enable the babel plugins to run during the prod build
 
 // @ts-check
 const fs = require('fs')

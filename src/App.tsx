@@ -1,61 +1,69 @@
-// import process from 'process'
-import React, { useState } from 'react'
-import logo from './logo.svg'
-
-import { Trans, t } from '@lingui/macro'
-import { i18n } from '@lingui/core'
 import './App.css'
-import { I18nProvider } from '@lingui/react'
-import { messages } from './locales/en/messages'
-import * as plurals from 'make-plural/plurals'
+import React, { useState } from 'react'
+import { Trans, Plural, t } from '@lingui/macro'
+import { i18n } from '@lingui/core'
 
-i18n.loadLocaleData('en', { plurals: plurals.en })
-i18n.load('en', messages)
-
+import { locales, dynamicActivate } from './i18n'
 i18n.activate('en')
 
 function App() {
   const [count, setCount] = useState(0)
-  const variable = 'My uber variable'
-
   return (
-    <I18nProvider i18n={i18n}>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Hello Vite +++ React!</p>
-          <p>
-            <button onClick={() => setCount((count) => count + 1)}>
-              {t`count is at: `}
-              {count}
+    <div className="App">
+      <header className="App-header">
+        <img
+          className="App-logo"
+          src="https://avatars3.githubusercontent.com/u/11225539?s=200&v=4"
+        />
+        <h3 data-testid="h3-title">
+          <Trans>Language switcher example: </Trans>
+        </h3>
+        <div className="lang-container">
+          {Object.values(locales).map((locale, index) => (
+            <button
+              type="button"
+              onClick={() => dynamicActivate(Object.keys(locales)[index])}
+              key={locale}
+            >
+              {locale}
             </button>
-          </p>
+          ))}
+        </div>
+        <h3>
+          <Trans>Plurals example: </Trans>
+        </h3>
+        <div className="lang-container">
+          <button type="button" onClick={() => setCount((state) => state + 1)}>
+            <Trans>Increment</Trans>
+          </button>
+          <button type="button" onClick={() => setCount((state) => state - 1)}>
+            <Trans>Decrement</Trans>
+          </button>
+        </div>
+        <Plural
+          value={count}
+          zero={'There are no books'}
+          one={"There's one book"}
+          other={'There are # books'}
+        />
+        <h3>
+          <Trans>Date formatter example:</Trans>
+        </h3>
+        <div>
+          <Trans>Today is {i18n.date(new Date(), {})}</Trans>
+        </div>
+        <h3>
+          <Trans>Number formatter example:</Trans>
+        </h3>
+        <div>
           <Trans>
-            Edit <code>{variable}</code> and save to test HMR updates{' '}
-            <strong>{variable}</strong>.
+            I have a balance of{' '}
+            {i18n.number(1_000_000, { style: 'currency', currency: 'EUR' })}
           </Trans>
-          <p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-            {' | '}
-            <a
-              className="App-link"
-              href="https://vitejs.dev/guide/features.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Vite Docs
-            </a>
-          </p>
-        </header>
-      </div>
-    </I18nProvider>
+        </div>
+        <h3>{t`template literal sample text`}</h3>
+      </header>
+    </div>
   )
 }
 

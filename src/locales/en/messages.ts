@@ -1,13 +1,1 @@
-/*eslint-disable*/ export const messages = {
-  'Edit <0>{variable}</0> and save to test HMR updates <1>{variable}</1>.': [
-    'Edit <0>',
-    ['variable'],
-    '</0> and save to test HMR updates <1>',
-    ['variable'],
-    '</1>.',
-  ],
-  'Multiline with continuation': 'Multiline with continuation',
-  'This is a different bar {bar}': ['This is a different bar ', ['bar']],
-  'This is bar {bar}': ['This is bar ', ['bar']],
-  'count is in:': 'count is in:',
-}
+/*eslint-disable*/export const messages={"Date formatter example:":"Date formatter example:","Decrement":"Decrement","Edit <0>{variable}</0> and save to test HMR updates <1>{variable}</1>.":["Edit <0>",["variable"],"</0> and save to test HMR updates <1>",["variable"],"</1>."],"I have a balance of {0}":["I have a balance of ",["0"]],"Increment":"Increment","Language switcher example:":"Language switcher example:","Multiline with continuation":"Multiline with continuation","Number formatter example:":"Number formatter example:","Plurals example:":"Plurals example:","This is a different bar {bar}":["This is a different bar ",["bar"]],"This is bar {bar}":["This is bar ",["bar"],"<<<<<<< HEAD"],"Today is {0}":["Today is ",["0"]],"count is in:":"count is in:=======","template literal sample text":"template literal sample text","{count, plural, zero {There are no books} one {There's one book} other {There are # books}}":[["count","plural",{zero:"There are no books",one:"There's one book",other:["There are ","#"," books"]}]]};

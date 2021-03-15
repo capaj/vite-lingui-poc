@@ -13,28 +13,58 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/App.tsx:29
-#: src/App.tsx:29
-#: src/App.tsx:29
-msgid "Edit <0>{variable}</0> and save to test HMR updates <1>{variable}</1>."
-msgstr ""
+#: src/App.tsx:33
+msgid "Date formatter example:"
+msgstr "Příklad formátovače data:"
 
-#: fixtures/js-t-continuation-character.expected.js:4
-#: fixtures/js-t-continuation-character.js:3
-#~ msgid "Multiline with continuation"
-#~ msgstr ""
+#: src/App.tsx:28
+msgid "Decrement"
+msgstr "Úbytek"
 
-#: fixtures/js-t-var/js-t-var.expected.js:17
-#: fixtures/js-t-var/js-t-var.js:9
-#~ msgid "This is a different bar {bar}"
-#~ msgstr ""
+#: src/App.tsx:29
+#: src/App.tsx:29
+#: src/App.tsx:29
+#~ msgid "Edit <0>{variable}</0> and save to test HMR updates <1>{variable}</1>."
+#~ msgstr "======="
+
+#: src/App.tsx:42
+msgid "I have a balance of {0}"
+msgstr "Mám zůstatek {0}"
+
+#: src/App.tsx:25
+msgid "Increment"
+msgstr "Přírůstek"
+
+#: src/App.tsx:13
+msgid "Language switcher example:"
+msgstr "Příklad přepínače jazyků:"
+
+#: src/App.tsx:39
+msgid "Number formatter example:"
+msgstr "Příklad formátovače čísel:"
+
+#: src/App.tsx:21
+msgid "Plurals example:"
+msgstr "Příklad množného čísla:"
 
 #: fixtures/js-t-var/js-t-var.expected.js:10
 #: fixtures/js-t-var/js-t-var.js:6
 #~ msgid "This is bar {bar}"
 #~ msgstr ""
 
+#: src/App.tsx:36
+msgid "Today is {0}"
+msgstr "Dnes je {0}<<<<<<< HEAD"
+
 #: src/App.tsx:25
 #: src/App.tsx:25
-msgid "count is in:"
-msgstr ""
+#~ msgid "count is in:"
+#~ msgstr "======="
+
+#: src/App.tsx:47
+msgid "template literal sample text"
+msgstr "příklad textu v template literálu"
+
+#: src/App.tsx:31
+msgid "{count, plural, zero {There are no books} one {There's one book} other {There are # books}}"
+msgstr "{count, plural, zero {Nejsou žádné knihy} one {Je tu jedna kniha} other {Existuje # knih}}"
