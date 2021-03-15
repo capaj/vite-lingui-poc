@@ -13,9 +13,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/App.tsx:24
-#: src/App.tsx:24
-#: src/App.tsx:24
+#: src/App.tsx:29
+#: src/App.tsx:29
+#: src/App.tsx:29
 msgid "Edit <0>{variable}</0> and save to test HMR updates <1>{variable}</1>."
 msgstr ""
 
@@ -33,3 +33,8 @@ msgstr ""
 #: fixtures/js-t-var/js-t-var.js:6
 #~ msgid "This is bar {bar}"
 #~ msgstr ""
+
+#: src/App.tsx:25
+#: src/App.tsx:25
+msgid "count is in:"
+msgstr ""

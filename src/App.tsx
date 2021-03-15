@@ -1,8 +1,8 @@
 // import process from 'process'
 import React, { useState } from 'react'
 import logo from './logo.svg'
-// @ts-expect-error
-import { Trans } from 'lingui.macro'
+
+import { Trans, t } from '@lingui/macro'
 import { i18n } from '@lingui/core'
 import './App.css'
 import { I18nProvider } from './lingui/react'
@@ -17,6 +17,7 @@ i18n.activate('en')
 function App() {
   const [count, setCount] = useState(0)
   const variable = 'My uber variable'
+  // @ts-expect-error
   console.scope()
   return (
     <I18nProvider i18n={i18n}>
@@ -26,7 +27,8 @@ function App() {
           <p>Hello Vite +++ React!</p>
           <p>
             <button onClick={() => setCount((count) => count + 1)}>
-              count is: {count}
+              {t`count is at: `}
+              {count}
             </button>
           </p>
           <Trans>
