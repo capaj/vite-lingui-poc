@@ -5,7 +5,7 @@ import logo from './logo.svg'
 import { Trans, t } from '@lingui/macro'
 import { i18n } from '@lingui/core'
 import './App.css'
-import { I18nProvider } from './lingui/react'
+import { I18nProvider } from '@lingui/react'
 import { messages } from './locales/en/messages'
 import * as plurals from 'make-plural/plurals'
 
