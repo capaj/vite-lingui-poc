@@ -6,7 +6,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "extract": "lingui extract",
-    "compile": "lingui compile"
+    "compile": "lingui compile",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "@babel/core": "^7.13.10",
