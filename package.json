@@ -7,37 +7,39 @@
     "serve": "vite preview",
     "extract": "lingui extract",
     "compile": "lingui compile",
-    "deploy": "vite build && gh-pages -d dist"
+    "deploy": "vite build && gh-pages -d dist",
+    "gh-page": "gh-pages -d dist"
   },
   "dependencies": {
-    "@babel/core": "^7.13.10",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "@babel/core": "^7.13.14",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.12.13",
     "@babel/plugin-transform-react-jsx-self": "^7.12.13",
     "@babel/plugin-transform-react-jsx-source": "^7.12.13",
     "@babel/runtime": "^7.13.10",
-    "@lingui/cli": "^3.7.2",
-    "@lingui/core": "^3.7.2",
-    "@lingui/macro": "^3.7.2",
-    "@lingui/react": "^3.7.2",
+    "@lingui/cli": "^3.8.2",
+    "@lingui/core": "^3.8.2",
+    "@lingui/macro": "^3.8.2",
+    "@lingui/react": "^3.8.2",
     "@types/babel-plugin-macros": "^2.8.4",
-    "@types/node": "^14.14.34",
+    "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.2",
+    "@types/react-dom": "^17.0.3",
+    "@vitejs/plugin-legacy": "^1.3.2",
     "babel-plugin-macros": "^3.0.1",
-    "husky": "^5.1.3",
+    "husky": "^6.0.0",
     "make-plural": "^6.2.2",
     "path-browserify": "^1.0.1",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "process": "^0.11.10",
     "ramda": "^0.27.1",
-    "react-refresh": "^0.9.0",
+    "react-refresh": "^0.10.0",
     "typescript": "^4.2.3",
-    "vite": "^2.0.5"
+    "vite": "^2.1.5"
   },
   "husky": {
     "hooks": {
